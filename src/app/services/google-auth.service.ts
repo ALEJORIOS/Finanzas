@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 
@@ -12,9 +13,9 @@ const oAuthConfig: AuthConfig = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class GoogleAuthService {
 
-  constructor(private readonly oAuthService: OAuthService) {
+  constructor(private readonly oAuthService: OAuthService, private httpClient: HttpClient) {
     oAuthService.configure(oAuthConfig);
     oAuthService.loadDiscoveryDocument().then(() => {
       oAuthService.tryLoginImplicitFlow().then(() => {
@@ -26,6 +27,16 @@ export class AuthService {
           })
         }
       })
+    })
+  }
+
+  postRecord(body: any) {
+    return this.httpClient.post<any>('https://sheets.googleapis.com/v4/spreadsheets/1d3MI2JW91aPvY7NxaClMcquHRqa4_NhsbfJydmhJKjg/values/A1:append?valueInputOption=RAW&alt=json', body, {headers: this.authHeader()});
+  }
+
+  private authHeader(): HttpHeaders {
+    return new HttpHeaders ({
+      'Authorization': `Bearer ${this.oAuthService.getAccessToken()}`
     })
   }
 }

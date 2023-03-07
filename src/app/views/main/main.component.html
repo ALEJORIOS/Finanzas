@@ -30,8 +30,14 @@
                     <textarea [formControl]="form.detail" rows="5" placeholder="Detalles..."></textarea>
                 </td>
             </tr>
+            <tr>
+                <td width="30%">Cantidad</td>
+                <td width="70%">
+                    <input type="number" [formControl]="form.amount">
+                </td>
+            </tr>
         </table>
-        <button class="submit">
+        <button class="submit" (click)="submit()">
             Subir
         </button>
         <i class="message">{{ message }}</i>
