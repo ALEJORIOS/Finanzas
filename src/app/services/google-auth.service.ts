@@ -16,6 +16,7 @@ const oAuthConfig: AuthConfig = {
 export class GoogleAuthService {
 
   constructor(private readonly oAuthService: OAuthService, private httpClient: HttpClient) {
+    this.deleteAllCookies();
     oAuthService.configure(oAuthConfig);
     oAuthService.loadDiscoveryDocument().then(() => {
       oAuthService.tryLoginImplicitFlow().then(() => {
@@ -29,6 +30,19 @@ export class GoogleAuthService {
       })
     })
   }
+
+  deleteAllCookies() {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+
+  
 
   postRecord(body: any) {
     return this.httpClient.post<any>('https://sheets.googleapis.com/v4/spreadsheets/1d3MI2JW91aPvY7NxaClMcquHRqa4_NhsbfJydmhJKjg/values/A1:append?valueInputOption=RAW&alt=json', body, {headers: this.authHeader()});
