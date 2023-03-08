@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { from } from 'rxjs';
 
-const oAuthConfig: AuthConfig = {
+const config: any = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
   redirectUri: window.location.origin,
@@ -14,18 +14,27 @@ const oAuthConfig: AuthConfig = {
 })
 export class AuthService {
 
-  constructor(private readonly oAuthService: OAuthService) {
-    oAuthService.configure(oAuthConfig);
-    oAuthService.loadDiscoveryDocument().then(() => {
-      oAuthService.tryLoginImplicitFlow().then(() => {
-        if(!oAuthService.hasValidAccessToken()) {
-          oAuthService.initLoginFlow();
-        } else {
-          oAuthService.loadUserProfile().then((userProfile) => {
-            console.log('User: ', userProfile);
-          })
-        }
-      })
-    })
+  constructor() {
+
+  }
+
+  auth() {
+    gapi
+    // gapi.client.init({
+    //   'clientId': config.clientId,
+    //   'scope': 'https://www.googleapis.com/auth/spreadsheets',
+    //   'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+    // }).then(function() {
+    //   if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
+    //     console.log('Hola mundo')
+    //     gapi.auth2.getAuthInstance().signIn();
+    // }
+    //   // gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+    //   // updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+    // });
+  }
+
+  postRecord(body: any) {
+    return from('holis')
   }
 }

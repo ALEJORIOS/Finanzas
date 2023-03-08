@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
-import { GoogleAuthService } from './services/google-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +8,5 @@ import { GoogleAuthService } from './services/google-auth.service';
 export class AppComponent {
   title = 'finanzas';
 
-  constructor(private readonly authService: GoogleAuthService) {}
+  constructor() {}
 }

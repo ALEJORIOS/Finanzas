@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import * as dayjs from 'dayjs';
-import { GoogleAuthService } from 'src/app/services/google-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -26,14 +26,12 @@ export default class MainComponent {
     detail: new FormControl(""),
     amount: new FormControl(0)
   }
-  constructor(private googleService: GoogleAuthService) {
-    console.log('>>>', this.currentDate);
-  }
+  constructor(private authService: AuthService) { }
 
   submit() {
     this.message = "Cargando..."
     const formattedDate = dayjs(this.form.date.value).format('M/D/YYYY');
-    this.googleService.postRecord({
+    this.authService.postRecord({
       "values": [
         [
           formattedDate,
@@ -54,5 +52,9 @@ export default class MainComponent {
         console.error('Error', err);
       }
     })
+  }
+
+  signIn() {
+    this.authService.auth();
   }
 }
