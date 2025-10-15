@@ -5,11 +5,10 @@ import * as dayjs from 'dayjs';
 import { GoogleAuthService } from 'src/app/services/google-auth.service';
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+    selector: 'app-main',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.scss']
 })
 export default class MainComponent {
 
