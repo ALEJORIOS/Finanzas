@@ -1,45 +1,47 @@
 <div class="main">
-    <span class="title">
-        Finanzas Ríos Soto
-    </span>
-    <div class="card">
-        <span class="card-title">Agregar un Registro</span>
-        <table>
-            <tr>
-                <td width="30%">Fecha</td>
-                <td width="70%"><input type="date" [formControl]="form.date"></td>
-            </tr>
-            <tr>
-                <td width="30%">Tipo</td>
-                <td style="display: flex; gap: 0.5em; align-items: center;" width="70%">
-                    <label for="income-kind"><input [ngClass]="{'check': form.income.value, 'uncheck': !form.income.value}" type="radio" name="kind" id="income-kind" [value]="true" [formControl]="form.income">Ingreso</label>
-                    <label for="outcome-kind"><input [ngClass]="{'check': !form.income.value, 'uncheck': form.income.value}" type="radio" name="kind" id="outcome-kind" [value]="false" [formControl]="form.income">Egreso</label>
-                </td>
-            </tr>
-            <tr>
-                <td width="30%">Concepto</td>
-                <td width="70%">
-                    <select [formControl]="form.concept">
-                        <option *ngFor="let concept of concepts" [value]="concept">{{ concept }}</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td width="30%">Detalle</td>
-                <td width="70%" vAlign="Middle">
-                    <textarea [formControl]="form.detail" rows="5" placeholder="Detalles..."></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td width="30%">Cantidad</td>
-                <td width="70%">
-                    <input type="number" [formControl]="form.amount">
-                </td>
-            </tr>
-        </table>
-        <button class="submit" (click)="submit()">
-            Subir
-        </button>
-        <i class="message">{{ message }}</i>
-    </div>
+  <span class="title">
+    Finanzas Ríos Soto
+  </span>
+  <div class="card">
+    <span class="card-title">Agregar un Registro</span>
+    <table>
+      <tr>
+        <td width="30%">Fecha</td>
+        <td width="70%"><input type="date" [formControl]="form.date"></td>
+      </tr>
+      <tr>
+        <td width="30%">Tipo</td>
+        <td style="display: flex; gap: 0.5em; align-items: center;" width="70%">
+          <label for="income-kind"><input [ngClass]="{'check': form.income.value, 'uncheck': !form.income.value}" type="radio" name="kind" id="income-kind" [value]="true" [formControl]="form.income">Ingreso</label>
+          <label for="outcome-kind"><input [ngClass]="{'check': !form.income.value, 'uncheck': form.income.value}" type="radio" name="kind" id="outcome-kind" [value]="false" [formControl]="form.income">Egreso</label>
+        </td>
+      </tr>
+      <tr>
+        <td width="30%">Concepto</td>
+        <td width="70%">
+          <select [formControl]="form.concept">
+            @for (concept of concepts; track concept) {
+              <option [value]="concept">{{ concept }}</option>
+            }
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td width="30%">Detalle</td>
+        <td width="70%" vAlign="Middle">
+          <textarea [formControl]="form.detail" rows="5" placeholder="Detalles..."></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td width="30%">Cantidad</td>
+        <td width="70%">
+          <input type="number" [formControl]="form.amount">
+        </td>
+      </tr>
+    </table>
+    <button class="submit" (click)="submit()">
+      Subir
+    </button>
+    <i class="message">{{ message }}</i>
+  </div>
 </div>
