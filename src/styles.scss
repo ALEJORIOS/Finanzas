@@ -1,6 +1,6 @@
-@import './assets/reset.scss';
+@use "./assets/reset.scss";
 * {
-    font-family: "Poppins", sans-serif;
+  font-family: "inter", sans-serif;
 }
 
 input::-webkit-outer-spin-button,
@@ -10,6 +10,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

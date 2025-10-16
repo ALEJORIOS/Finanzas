@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
-import { GoogleAuthService } from './services/google-auth.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
 })
 export class AppComponent {
   title = 'finanzas';
 
-  constructor(private readonly authService: GoogleAuthService) {}
+  constructor() {}
 }
