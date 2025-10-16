@@ -8,7 +8,7 @@ export class ConnectionService {
   constructor(private http: HttpClient) {}
 
   submitMovement(mov: Movement) {
-    return this.http.post(`http://147.79.74.64:3220/insert`, mov);
+    return this.http.post(`https://finances.hodweb.dev/insert`, mov);
   }
 }
 
