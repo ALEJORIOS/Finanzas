@@ -1,0 +1,33 @@
+.insert {
+  background-color: #fff;
+  box-shadow: 0 0 8px 4px #c0c0c050;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin: 1rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+table {
+  margin: 1rem;
+  td,
+  th {
+    padding: 0.5rem;
+    text-wrap: nowrap;
+    border: 1px solid #f0f0f0;
+  }
+  th {
+    font-weight: 700;
+  }
+  .income {
+    background-color: #29b70f30;
+    color: #29b70f;
+    font-weight: 600;
+  }
+  .outcome {
+    background-color: #b7161630;
+    color: #b71616;
+    font-weight: 600;
+  }
+}

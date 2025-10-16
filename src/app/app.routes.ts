@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./views/main/main.component'),
   },
   {
+    path: 'record',
+    loadComponent: () => import('./views/record/record.component'),
+  },
+  {
     path: '',
     redirectTo: '/insert',
     pathMatch: 'full',

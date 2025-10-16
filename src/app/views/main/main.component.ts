@@ -4,6 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import dayjs from 'dayjs';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -57,9 +58,7 @@ export default class MainComponent {
     value: new FormControl<number | null>(null),
   };
 
-  constructor(private connection: ConnectionService) {
-    console.log('>>>', this.currentDate);
-  }
+  constructor(private connection: ConnectionService, private router: Router) {}
 
   cleanMessage() {
     this.message = '';
@@ -71,6 +70,10 @@ export default class MainComponent {
     this.form.category.setValue('Food');
     this.form.description.setValue('');
     this.form.value.setValue(null);
+  }
+
+  goToRecord() {
+    this.router.navigate(['/record']);
   }
 
   submit() {

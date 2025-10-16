@@ -10,6 +10,10 @@ export class ConnectionService {
   submitMovement(mov: Movement) {
     return this.http.post(`https://finances.hodweb.dev/insert`, mov);
   }
+
+  retrieveRecord() {
+    return this.http.get(`https://finances.hodweb.dev/record`);
+  }
 }
 
 export interface Movement {

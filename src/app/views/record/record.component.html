@@ -1,0 +1,29 @@
+<button class="insert" (click)="goToInsert()">Insertar</button>
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Concepto</th>
+    <th>Categoría</th>
+    <th>Descripción</th>
+    <th>Valor</th>
+  </tr>
+  @for(record of recordResource.value(); track $index) {
+  <tr>
+    <td>{{ record.date | date : "dd MMM" }}</td>
+    <td
+      [ngClass]="{
+        income: record.concept.toUpperCase() === 'INCOME',
+        outcome: record.concept.toUpperCase() === 'OUTCOME'
+      }"
+    >
+      {{ record.concept }}
+    </td>
+
+    <td>{{ record.category }}</td>
+    <td style="width: 30rem; text-wrap: wrap">
+      {{ record.description }}
+    </td>
+    <td>{{ record.value }}</td>
+  </tr>
+  }
+</table>
