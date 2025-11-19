@@ -4,10 +4,13 @@
   border: none;
   outline: none;
   padding: 0.5rem 1rem;
+  font-size: 16px;
+  height: 42px;
   border-radius: 8px;
   margin: 1rem;
   margin-bottom: 0;
   font-weight: 600;
+  cursor: pointer;
 }
 table {
   margin: 1rem;
@@ -20,14 +23,17 @@ table {
   th {
     font-weight: 700;
   }
+  td:last-child {
+    text-align: right;
+  }
   .income {
     background-color: #29b70f30;
     color: #29b70f;
     font-weight: 600;
   }
   .outcome {
-    background-color: #b7161630;
-    color: #b71616;
+    background-color: #ec5a5a15;
+    color: #d32323;
     font-weight: 600;
   }
 }

@@ -82,7 +82,7 @@ export default class MainComponent {
     this.connection
       .submitMovement({
         date: formattedDate,
-        concept: this.form.concept.value === true ? 'income' : 'outcome',
+        concept: this.form.concept.value === true ? 'Income' : 'Outcome',
         category: this.form.category.value || '',
         description: this.form.description.value || '',
         value: this.form.value.value || 0,
