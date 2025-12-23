@@ -14,7 +14,7 @@
   }@else {
     @for(record of recordResource.value(); track $index) {
     <tr>
-      <td>{{ record.date | date : "dd MMM" }}</td>
+      <td>{{ record.date | date : "dd MMM":"UTC" }}</td>
       <td
         [ngClass]="{
           income: record.concept.toUpperCase() === 'INCOME',
