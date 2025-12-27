@@ -29,7 +29,7 @@ export default class MainComponent {
     'Education',
     'Emergencies Fund',
     'Entertainment',
-    'Family',
+    'Fam',
     'Food',
     'Gift',
     'Health',
