@@ -23,4 +23,15 @@ export default class RecordComponent {
   goToInsert() {
     this.router.navigate(['/insert']);
   }
+
+  goToDownload() {
+    this.connection.downloadExcel().subscribe((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'record.xlsx';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
+  }
 }

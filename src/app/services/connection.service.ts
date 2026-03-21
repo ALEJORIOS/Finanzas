@@ -8,11 +8,16 @@ export class ConnectionService {
   constructor(private http: HttpClient) {}
 
   submitMovement(mov: Movement) {
-    return this.http.post(`https://finances.hodweb.dev/insert`, mov);
+    // return this.http.post(`https://finances.hodweb.dev/insert`, mov);
+    return this.http.post(`http://147.79.74.64:3220/insert`, mov);
   }
 
   retrieveRecord() {
-    return this.http.get(`https://finances.hodweb.dev/record`);
+    return this.http.get(`http://147.79.74.64:3220/record`);
+  }
+
+  downloadExcel() {
+    return this.http.get(`http://147.79.74.64:3220/download`, { responseType: 'blob' });
   }
 }
 
