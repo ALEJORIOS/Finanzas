@@ -9,15 +9,15 @@ export class ConnectionService {
 
   submitMovement(mov: Movement) {
     // return this.http.post(`https://finances.hodweb.dev/insert`, mov);
-    return this.http.post(`http://147.79.74.64:3220/insert`, mov);
+    return this.http.post(`https://finances.hodweb.dev/insert`, mov);
   }
 
   retrieveRecord() {
-    return this.http.get(`http://147.79.74.64:3220/record`);
+    return this.http.get(`https://finances.hodweb.dev/record`);
   }
 
   downloadExcel() {
-    return this.http.get(`http://147.79.74.64:3220/download`, { responseType: 'blob' });
+    return this.http.get(`https://finances.hodweb.dev/download`, { responseType: 'blob' });
   }
 }
 
