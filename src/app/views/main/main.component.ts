@@ -24,7 +24,6 @@ export default class MainComponent {
     'Classes',
     'Cleaning',
     'Clothes',
-    'Clothing',
     'Dreamland',
     'Education',
     'Emergencies Fund',
