@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import dayjs from 'dayjs';
 import { ConnectionService } from 'src/app/services/connection.service';
-import { finalize } from 'rxjs';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -75,7 +75,20 @@ export default class MainComponent {
     this.router.navigate(['/record']);
   }
 
-  submit() {
+  async checkWarning() {
+    const records: Object[] = (await firstValueFrom(this.connection.retrieveRecord()) as Object[]).filter((record: any) => {
+      return record.date === this.form.date.value + 'T00:00:00.000Z' &&
+             record.category === this.form.category.value &&  
+             parseInt(record.value.replace(/[^\d.-]/g, "")) === this.form.value.value;
+    });
+    if(records.length > 0) {
+      this.openDialog();
+    } else {
+      this.submit();
+    }
+  }
+  
+  submit() {    
     this.message = 'Cargando...';
     const formattedDate = dayjs(this.form.date.value).format('YYYY-MM-DD');
     this.connection
@@ -93,11 +106,24 @@ export default class MainComponent {
           setTimeout(() => {
             this.cleanMessage();
             this.cleanForm();
+            this.closeDialog();
           }, 1000);
         },
         error: () => {
           this.message = 'Error subiendo movimiento';
+          this.closeDialog();
         },
       });
+  }
+
+  openDialog() {
+    const dialog = document.getElementById('dialog') as HTMLDialogElement;
+    dialog.showModal();
+  }
+
+  closeDialog() {
+    const dialog = document.getElementById('dialog') as HTMLDialogElement;
+    dialog.close();
+    this.cleanMessage();
   }
 }

@@ -1,6 +1,6 @@
 <div class="main">
   <div class="card">
-    <span class="card__title">Agregar un Registro</span>
+    <span class="card__title">Agregar un registro</span>
     <table>
       <tr>
         <td width="30%">Fecha</td>
@@ -67,7 +67,7 @@
         </td>
       </tr>
     </table>
-    <button class="submit" (click)="submit()" [disabled]="message">
+    <button class="submit" (click)="checkWarning()" [disabled]="message">
       Subir
     </button>
     <i class="message" (click)="cleanMessage()">{{ message }}</i>
@@ -75,3 +75,16 @@
   <button class="submit" (click)="goToRecord()">Ver registro</button>
 <span class="version">Versión 1.1.0</span>
 </div>
+
+<dialog id="dialog">
+  <div class="dialog__content">
+    <span class="dialog__title">Advertencia</span>
+    <div class="dialog__body">
+      <span>Un registro con este valor bajo este concepto ya existe en esta fecha</span>
+    </div>
+    
+    <button class="cancel" (click)="closeDialog()">Cancelar</button>
+    <button class="submit" (click)="submit()" [disabled]="message">Registrar</button>
+    <i class="message" (click)="cleanMessage()">{{ message }}</i>
+  </div>
+</dialog>
